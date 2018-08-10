@@ -48,9 +48,9 @@ PS:如果很慢，把github.com的ip写到hosts里面去，测延迟去站长之
 
 **英文博客笔记：**
 
-[Flutter Container Cheat Sheet](https://medium.com/jlouage/container-de5b0d3ad184)
+[Container Cheat Sheet](https://medium.com/jlouage/container-de5b0d3ad184)
 
-[Flutter Layout Cheat Sheet](https://proandroiddev.com/flutter-layout-cheat-sheet-5363348d037e)
+[Layout Cheat Sheet](https://proandroiddev.com/flutter-layout-cheat-sheet-5363348d037e)
 
 
 
