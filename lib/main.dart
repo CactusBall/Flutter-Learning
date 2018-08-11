@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/container.dart';
+import 'package:flutter_app/widgets/align.dart';
+import 'package:flutter_app/widgets/aspectradio.dart';
+import 'package:flutter_app/widgets/center.dart';
+import 'package:flutter_app/widgets/container.dart';
+import 'package:flutter_app/widgets/fittedbox.dart';
+import 'package:flutter_app/widgets/padding.dart';
 
 void main() => runApp(MyApp());
 
 const List<String> basicWidgets = [
   "Container",
+  "Padding",
+  "Center",
+  "Align",
+  "FitterBox",
+  "AspectRadio"
 ];
 
 class MyApp extends StatelessWidget {
@@ -20,6 +30,11 @@ class MyApp extends StatelessWidget {
       ),
       routes: <String, WidgetBuilder>{
         '/Container': (_) => new ContainerBasic(),
+        '/Padding': (_) => new PaddingBase(),
+        '/Center':(_)=> new CenterBase(),
+        '/Align':(_)=>new AlignBase(),
+        '/FitterBox':(_)=> new FitterBoxBase(),
+        '/AspectRadio':(_)=> new AspectRadioBase(),
       },
     );
   }
@@ -54,7 +69,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: new TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 20.0),
                 ),
-                margin: EdgeInsets.all(4.0),
               ),
             ),
             onTap: () {
