@@ -53,4 +53,6 @@ PS:如果很慢，把github.com的ip写到hosts里面去，测延迟去站长之
 [Layout Cheat Sheet](https://proandroiddev.com/flutter-layout-cheat-sheet-5363348d037e)
 
 
+##  FittedBox、AspectRatio、ConstrainedBox
 
+[FittedBox、AspectRatio、ConstrainedBox详解](https://juejin.im/post/5b2d04eef265da59951fe796)

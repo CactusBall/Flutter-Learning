@@ -20,7 +20,9 @@ class AspectRadioContent extends StatelessWidget{
       height: 250.0,
       child: new AspectRatio(
           aspectRatio: 0.6,
-          child: Text('Hello World'),
+          child: new Container(
+            color: Colors.yellow,
+          ),
       ),
     );
   }

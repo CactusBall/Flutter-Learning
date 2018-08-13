@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widgets/baseline.dart';
+import 'package:flutter_app/widgets/constrainerbox.dart';
 import 'package:flutter_app/widgets/align.dart';
 import 'package:flutter_app/widgets/aspectradio.dart';
 import 'package:flutter_app/widgets/center.dart';
 import 'package:flutter_app/widgets/container.dart';
 import 'package:flutter_app/widgets/fittedbox.dart';
+import 'package:flutter_app/widgets/gridview.dart';
 import 'package:flutter_app/widgets/padding.dart';
 
 void main() => runApp(MyApp());
@@ -14,7 +17,10 @@ const List<String> basicWidgets = [
   "Center",
   "Align",
   "FitterBox",
-  "AspectRadio"
+  "AspectRadio",
+  "ConstrainerBox",
+  "BaseLine",
+  "GridView",
 ];
 
 class MyApp extends StatelessWidget {
@@ -35,6 +41,9 @@ class MyApp extends StatelessWidget {
         '/Align':(_)=>new AlignBase(),
         '/FitterBox':(_)=> new FitterBoxBase(),
         '/AspectRadio':(_)=> new AspectRadioBase(),
+        '/ConstrainerBox':(_)=>new ConstrainedBoxBase(),
+        '/BaseLine':(_)=>new BaseLineBase(),
+        '/GridView':(_)=>new GridViewBase(),
       },
     );
   }
