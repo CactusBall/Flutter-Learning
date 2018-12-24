@@ -4,12 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/page/ArticlePage.dart';
 import 'package:flutter_app/page/DailyPage.dart';
 import 'package:flutter_app/page/FeedPage.dart';
-import 'package:flutter_app/widget/FWBottomNavigationBar.dart';
-import 'package:flutter_app/widget/FWTitleBar.dart';
-import 'package:flutter_app/widget/HomeDrawer.dart';
+import 'package:flutter_app/theme/theme.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   static final String name = "home";
+  final AppTheme appTheme;
+  final ValueChanged<AppTheme> onThemeChanged;
+
+  HomePage(this.appTheme, this.onThemeChanged);
+
+  @override
+  State createState() {
+    return new HomePageState();
+  }
+}
+
+class HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
 
   Future<bool> _exitApp(BuildContext context) {
     return showDialog(
@@ -30,67 +41,43 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () {
-        return _exitApp(context);
-      },
-      child: new FWBottomNavigationBar(
-        drawer: new HomeDrawer(),
-        tabItems: [
-          new Tab(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Icon(Icons.home, size: 20.0),
-                new Text(
-                  "每日Gank",
-                  style: TextStyle(
-                    fontSize: 12.0,
-                  ),
-                )
-              ],
-            ),
+        onWillPop: () {
+          return _exitApp(context);
+        },
+        child: new Scaffold(
+          body: _buildNetBody(),
+          bottomNavigationBar: new BottomNavigationBar(
+            currentIndex: _currentIndex,
+            items: [
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.home), title: new Text("Daily")),
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.category), title: new Text("Category")),
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.whatshot), title: new Text("Writing")),
+              new BottomNavigationBarItem(
+                  icon: new Icon(Icons.settings), title: new Text("Settings"))
+            ],
+            type: BottomNavigationBarType.fixed,
+            onTap: (int selected) {
+              setState(() {
+                this._currentIndex = selected;
+              });
+            },
           ),
-          new Tab(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Icon(Icons.category, size: 20.0),
-                new Text(
-                  "分类阅读",
-                  style: TextStyle(
-                    fontSize: 12.0,
-                  ),
-                )
-              ],
-            ),
-          ),
-          new Tab(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Icon(Icons.whatshot, size: 20.0),
-                new Text(
-                  "闲读",
-                  style: TextStyle(
-                    fontSize: 12.0,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ],
-        tabViews: [
-          new DailyPage(),
-          new FeedPage(),
-          new ArticlePage(),
-        ],
-        title: new FWTitleBar(
-          "Gank",
-          iconData: Icons.search,
-          needRightLocalIcon: true,
-          onPressed: () {},
-        ),
-      ),
+        ));
+  }
+
+  Widget _buildNetBody() {
+    final List<Widget> transitions = <Widget>[];
+    transitions.add(new DailyPage());
+    transitions.add(new FeedPage());
+    transitions.add(new ArticlePage());
+//    transitions.add(new AboutPage(widget.appTheme, widget.onThemeChanged));
+    //transitions.add(new SearchPage());
+    return new IndexedStack(
+      children: transitions,
+      index: _currentIndex,
     );
   }
 }

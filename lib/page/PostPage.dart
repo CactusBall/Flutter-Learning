@@ -20,7 +20,7 @@ class _PostWebViewState extends State<PostPage> {
   bool isLoaded = false;
 
   // Instance of WebView plugin
-  final flutterWebviewPlugin = new FlutterWebviewPlugin();
+  final flutterWebViewPlugin = new FlutterWebviewPlugin();
 
   StreamSubscription<WebViewStateChanged> _onStateChanged;
 
@@ -35,10 +35,10 @@ class _PostWebViewState extends State<PostPage> {
   initState() {
     super.initState();
 
-    flutterWebviewPlugin.close();
+    flutterWebViewPlugin.close();
 
     _onStateChanged =
-        flutterWebviewPlugin.onStateChanged.listen((WebViewStateChanged state) {
+        flutterWebViewPlugin.onStateChanged.listen((WebViewStateChanged state) {
           print("state: ${state.type}");
           if (state.type == WebViewState.finishLoad) {
             // 加载完成
@@ -54,7 +54,7 @@ class _PostWebViewState extends State<PostPage> {
     // Every listener should be canceled, the same should be done with this stream.
 
     _onStateChanged.cancel();
-    flutterWebviewPlugin.dispose();
+    flutterWebViewPlugin.dispose();
 
     super.dispose();
   }
